@@ -21,21 +21,21 @@
       <p>Please fill in this form to create an account.</p>
       <hr>
       <label for="rEmail"><b>Email</b></label>
-      <input type="text" placeholder="Enter Email" name="email" id="rEmail" value="" required>
+      <input type="text" placeholder="Enter Email" name="email" id="rEmail" onfocusout="validateEmail(this.value);" onkeyup="validateEmail(this.value); enableSubmitBtn();" value="" required>
+      <span id="msgEmail"></span></br></br>
 
       <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" id="rPassword" value="" required>
-      <meter max="4" id="password-strength-meter"></meter>
-      <p id="password-strength-text"></p>
-
+      <input type="password" placeholder="Enter Password" name="psw" id="rPassword" onkeyup="validatePassword(this.value); getPasswordValue(this.value); enableSubmitBtn();" value="" required>
+      <span id="msgPassStr"></span></br></br>
       <label for="psw-repeat"><b>Repeat Password</b></label>
-      <input type="password" placeholder="Repeat Password" name="psw-repeat" id="rPasswordAgain" value="" required>
-      <p>Password must be at least 8 characters long</p>
+      <input type="password" placeholder="Repeat Password" name="psw-repeat" onfocusout="comparePassword(this.value); passwordLength(this.value); enableSubmitBtn(); " id="rPasswordAgain" onkeyup="enableSubmitBtn();" value="" required>
+      <span id="msgRepPass"></span></br>
+      <span id="msgPasslgth"></span></br></br>
     
       <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
       <div class="clearfix">
-        <button type="submit" class="signupbtn">Sign Up</button>
+        <button type="submit" class="signupbtn" id="submit" disabled>Sign Up</button>
         <hr>
         <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
       </div>
