@@ -35,22 +35,17 @@ let regPassword = document.querySelector('#rPassword').value;
 let regEmail = document.querySelector('#rEmail').value;
 let regPasswordAgain = document.querySelector('#rPasswordAgain').value;
 
-let email;
-let password; 
-let passwordAgain;
-
 function validateEmail(regEmail) {
  if(! regEmail.includes('@')) {
   //alert('valid email is required');
   document.querySelector("#msgEmail").innerHTML = "valid email is required";
   document.querySelector("#msgEmail").style.color = "red";
-  document.querySelector("#submit").disabled = false;
-  email = false
+  document.querySelector("#submit").disabled = false;  
   return false;
  } else {
   document.querySelector("#msgEmail").innerHTML = "";
-  email = true
- } 
+ }
+ 
 }
 
 function getPasswordValue(pass) {
@@ -64,13 +59,12 @@ function comparePassword(regPasswordAgain) {
     document.querySelector("#msgRepPass").innerHTML = "password dont mactch";
     document.querySelector("#msgRepPass").style.color = "red";
     document.querySelector("#submit").disabled = false;
-    password = false
     return false;
   } else {
     document.querySelector("#msgRepPass").innerHTML = "";
-    password = true
   }
-  console.log(email, password, passwordAgain)
+  console.log(email, password, tpasswordAgain);
+  
  }
 
  function passwordLength(regPasswordAgain) {
@@ -79,12 +73,11 @@ function comparePassword(regPasswordAgain) {
     document.querySelector("#msgPasslgth").innerHTML = "Password must be at least 8 characters long";
     document.querySelector("#msgPasslgth").style.color = "red";
     document.querySelector("#submit").disabled = false;
-    passwordAgain = false
     return false;
   } else {
     document.querySelector("#msgPasslgth").innerHTML = "";
-    passwordAgain = true
   }
+  
  }
 
 
@@ -131,10 +124,4 @@ function validatePassword(password) {
   }
   document.querySelector("#msgPassStr").innerHTML = strength;
   document.querySelector("#msgPassStr").style.color = color;
-}
-
-function enableSubmitBtn() {
-  if(email && password && passwordAgain) {
-    document.querySelector("#submit").disabled = false;
-  }
 }

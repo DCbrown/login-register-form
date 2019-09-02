@@ -21,14 +21,14 @@
       <p>Please fill in this form to create an account.</p>
       <hr>
       <label for="rEmail"><b>Email</b></label>
-      <input type="text" placeholder="Enter Email" name="email" id="rEmail" onfocusout="validateEmail(this.value);" onkeyup="validateEmail(this.value); enableSubmitBtn();" value="" required>
+      <input type="text" placeholder="Enter Email" name="email" id="rEmail" onfocusout="validateEmail(this.value);" onkeyup="validateEmail(this.value);" value="" required>
       <span id="msgEmail"></span></br></br>
 
       <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" id="rPassword" onkeyup="validatePassword(this.value); getPasswordValue(this.value); enableSubmitBtn();" value="" required>
+      <input type="password" placeholder="Enter Password" name="psw" id="rPassword" onkeyup="validatePassword(this.value); getPasswordValue(this.value);" value="" required>
       <span id="msgPassStr"></span></br></br>
       <label for="psw-repeat"><b>Repeat Password</b></label>
-      <input type="password" placeholder="Repeat Password" name="psw-repeat" onfocusout="comparePassword(this.value); passwordLength(this.value); enableSubmitBtn(); " id="rPasswordAgain" onkeyup="enableSubmitBtn();" value="" required>
+      <input type="password" placeholder="Repeat Password" name="psw-repeat" onfocusout="comparePassword(this.value); passwordLength(this.value);" id="rPasswordAgain" value="" required>
       <span id="msgRepPass"></span></br>
       <span id="msgPasslgth"></span></br></br>
     
