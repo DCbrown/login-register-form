@@ -1,36 +1,57 @@
 // register
 
+clearForm = () => {
+  regEmail.value = "";
+  regPassword.value = "";
+  regPasswordAgain.value = "";
+  document.querySelector('#id02').style.display="none";
+  document.querySelector("#msgEmail").innerHTML = "";
+}
 
-submitForm = () => { 
+function submitForm() { 
   let regEmail = document.querySelector('#rEmail').value;
   let regPassword = document.querySelector('#rPassword').value;
   let regPasswordAgain = document.querySelector('#rPasswordAgain').value;
   let registeredUsers = [];
 
-  clearForm = () => {
-    regEmail.value = "";
-    regPassword.value = "";
-    regPasswordAgain.value = "";
-    document.querySelector('#id02').style.display='none';
-  }
-  /*
-  if(regEmail.includes('@')) {
-    
-    if(regPassword === regPasswordAgain) {
-      console.log(`${regPassword} ${regEmail} ${regPasswordAgain}`);
-      clearForm();
-    } else {
-      alert('passwords do not match');
-      return false;
-    }
-
+  
+  if (! regEmail.includes('@')) {
+    document.querySelector("#msgEmail").innerHTML = "valid email is required";
+    document.querySelector("#msgEmail").style.color = "red";
+    document.querySelector('#msgEmail').style.display = "block";
+    window.alert("Please enter your name."); 
+    return false; 
   } else {
-    alert('valid email is required');
-    return false;
+    document.querySelector("#msgEmail").innerHTML = "";
+    document.querySelector('#msgEmail').style.display = "none";
   }
-  */
+
+  if(regPassword.length <= 7) {
+    document.querySelector("#msgPass").innerHTML = "password needs to be 8 characters or more";
+    document.querySelector("#msgPass").style.color = "red";
+    document.querySelector('#msgPass').style.display = "block";
+    return false; 
+  } else {
+    document.querySelector("#msgPass").innerHTML = "";
+    document.querySelector('#msgPass').style.display = "none";
+  }
+
+  if(regPassword != regPasswordAgain) {
+    document.querySelector("#msgPass").innerHTML = "password do not match";
+    document.querySelector("#msgPass").style.color = "red";
+    document.querySelector('#msgPass').style.display = "block";
+    return false; 
+  } else {
+    document.querySelector("#msgPass").innerHTML = "";
+    document.querySelector('#msgPass').style.display = "none";
+  }
+
+  clearForm();
+  return true; 
 }
 
+
+/*
 let regPassword = document.querySelector('#rPassword').value;
 let regEmail = document.querySelector('#rEmail').value;
 let regPasswordAgain = document.querySelector('#rPasswordAgain').value;
@@ -79,7 +100,7 @@ function comparePassword(regPasswordAgain) {
   }
   
  }
-
+*/
 
 
 function validatePassword(password) {

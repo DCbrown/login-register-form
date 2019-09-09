@@ -23,13 +23,16 @@ button {
   border-radius: 25px;
 }
 
-button:hover {
-  opacity: 0.8;
+#msgPass,
+#msgPassStr,
+#msgRepPass,
+#msgPasslgth,
+#msgEmail  {
+  display: none;
 }
 
-button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+button:hover {
+  opacity: 0.8;
 }
 
 /* Extra styles for the cancel button */
@@ -146,4 +149,10 @@ meter::-webkit-meter-bar {
   .cancelbtn {
      width: 100%;
   }
+}
+
+@media only screen and (max-width: 767px) {
+    .modal-content {
+      width: 100%;
+    }  
 }
