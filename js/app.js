@@ -1,14 +1,18 @@
 // register
 
 clearForm = () => {
+  console.log('hi');
+  console.log(registeredUsers);
   regEmail.value = "";
   regPassword.value = "";
   regPasswordAgain.value = "";
   document.querySelector('#id02').style.display="none";
   document.querySelector("#msgEmail").innerHTML = "";
+
 }
 
 function submitForm() { 
+  
   let regEmail = document.querySelector('#rEmail').value;
   let regPassword = document.querySelector('#rPassword').value;
   let regPasswordAgain = document.querySelector('#rPasswordAgain').value;
@@ -19,7 +23,7 @@ function submitForm() {
     document.querySelector("#msgEmail").innerHTML = "valid email is required";
     document.querySelector("#msgEmail").style.color = "red";
     document.querySelector('#msgEmail').style.display = "block";
-    window.alert("Please enter your name."); 
+    // window.alert("Please enter your email."); 
     return false; 
   } else {
     document.querySelector("#msgEmail").innerHTML = "";
@@ -27,7 +31,7 @@ function submitForm() {
   }
 
   if(regPassword.length <= 7) {
-    document.querySelector("#msgPass").innerHTML = "password needs to be 8 characters or more";
+    document.querySelector("#msgPass").innerHTML = "Password needs to be 8 characters or more";
     document.querySelector("#msgPass").style.color = "red";
     document.querySelector('#msgPass').style.display = "block";
     return false; 
@@ -46,62 +50,20 @@ function submitForm() {
     document.querySelector('#msgPass').style.display = "none";
   }
 
+  let SignUp = {
+    email: regEmail,
+    password: regPassword
+  }
+
+  registeredUsers.push(SignUp);
+  localStorage.setItem('RegUser', JSON.stringify(registeredUsers));
+  console.log(registeredUsers);
+
   clearForm();
   return true; 
 }
 
-
-/*
-let regPassword = document.querySelector('#rPassword').value;
-let regEmail = document.querySelector('#rEmail').value;
-let regPasswordAgain = document.querySelector('#rPasswordAgain').value;
-
-function validateEmail(regEmail) {
- if(! regEmail.includes('@')) {
-  //alert('valid email is required');
-  document.querySelector("#msgEmail").innerHTML = "valid email is required";
-  document.querySelector("#msgEmail").style.color = "red";
-  document.querySelector("#submit").disabled = false;  
-  return false;
- } else {
-  document.querySelector("#msgEmail").innerHTML = "";
- }
- 
-}
-
-function getPasswordValue(pass) {
-  regPassword = pass;
-  return regPassword;
-}
-
-function comparePassword(regPasswordAgain) {
-  if(regPassword != regPasswordAgain) {
-    // alert('password dont mactch');
-    document.querySelector("#msgRepPass").innerHTML = "password dont mactch";
-    document.querySelector("#msgRepPass").style.color = "red";
-    document.querySelector("#submit").disabled = false;
-    return false;
-  } else {
-    document.querySelector("#msgRepPass").innerHTML = "";
-  }
-  console.log(email, password, tpasswordAgain);
-  
- }
-
- function passwordLength(regPasswordAgain) {
-  if (regPasswordAgain.length <= 8) {
-    // alert('password need to be 8 charaters or more');
-    document.querySelector("#msgPasslgth").innerHTML = "Password must be at least 8 characters long";
-    document.querySelector("#msgPasslgth").style.color = "red";
-    document.querySelector("#submit").disabled = false;
-    return false;
-  } else {
-    document.querySelector("#msgPasslgth").innerHTML = "";
-  }
-  
- }
-*/
-
+// validate password str
 
 function validatePassword(password) {
                 
@@ -146,3 +108,4 @@ function validatePassword(password) {
   document.querySelector("#msgPassStr").innerHTML = strength;
   document.querySelector("#msgPassStr").style.color = color;
 }
+
