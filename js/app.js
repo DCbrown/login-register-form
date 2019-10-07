@@ -17,6 +17,7 @@ function submitForm() {
   let regPassword = document.querySelector('#rPassword').value;
   let regPasswordAgain = document.querySelector('#rPasswordAgain').value;
   let registeredUsers = [];
+  let genID = JSON.stringify(Math.floor(Math.random() * 9999));
 
   
   if (! regEmail.includes('@')) {
@@ -55,10 +56,22 @@ function submitForm() {
     password: regPassword
   }
 
-  registeredUsers.push(SignUp);
-  localStorage.setItem('RegUser', JSON.stringify(registeredUsers));
-  console.log(registeredUsers);
+  // Loop through localStorage for id
+  /*
+  if(genID === genID) {
+    JSON.stringify(Math.floor(Math.random() * 9999));
+  } else {
+  this.registeredUsers.push(SignUp);
+  localStorage.setItem("Item", JSON.stringify(registeredUsers));
+  console.log(registeredUsers);  
+  }
+  */
 
+  registeredUsers.push(SignUp);
+  localStorage.setItem(genID, JSON.stringify(registeredUsers));
+  console.log(registeredUsers);  
+
+  
   clearForm();
   return true; 
 }
